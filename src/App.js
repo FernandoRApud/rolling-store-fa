@@ -3,6 +3,13 @@ import logo from './logo.svg';
 import './App.css';
 import { Button } from 'antd';
 import Main from './components/Main';
+import Results from './components/Results';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";  
 
 export default class App extends React.Component {
   constructor(props){
@@ -34,11 +41,20 @@ export default class App extends React.Component {
 
   render(){
     return (
-      <div className="App">
-        <header className="App-container">
-          <Main userName={this.state.userName} products={this.state.products}></Main>
-        </header>
-      </div>
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <div className="App-container">
+              <Main userName={this.state.userName} products={this.state.products}/>          
+            </div>
+          </Route>
+          <Route path="/results">
+            <div className="App-container">
+              <Results userName={this.state.userName} products={this.state.products}/>
+            </div>
+          </Route>
+        </Switch>
+      </Router>
     );
   }
 }

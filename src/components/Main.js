@@ -16,7 +16,7 @@ export default class Main extends React.Component{
                             <img src={logo} className="header-logo" alt="logo" />
                         </Col>
                         <Col xs={{span: 19}} lg={{span: 16}}>
-                            <Search placeholder="Que queres comprar?" onSearch={value => console.log(value)}/>
+                            <Search placeholder="Que queres comprar?" onSearch={ a => console.log(a)}/>
                         </Col>
                         <Col xs={{span: 0}} lg={{span: 5}}>
                             <div className="header-greetings">Bienvenido {this.props.userName}</div>
