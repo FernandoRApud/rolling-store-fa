@@ -4,12 +4,21 @@ import './App.css';
 import { Button } from 'antd';
 import Main from './components/Main';
 
-function App() {
-  return (
-    <div className="App">
-      <Main></Main>
-    </div>
-  );
-}
+export default class App extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      userName: 'Fernando'
+    }
+  }
 
-export default App;
+  render(){
+    return (
+      <div className="App">
+        <header className="App-container">
+          <Main userName={this.state.userName}></Main>
+        </header>
+      </div>
+    );
+  }
+}
