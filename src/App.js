@@ -8,7 +8,27 @@ export default class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      userName: 'Fernando'
+      userName: 'Fernando',
+      products: [
+        {
+          id: 'prod01',
+          name: 'Notebook',
+          brand: 'Asus',
+          price: 19000
+        },
+        {
+          id: 'prod02',
+          name: 'Zapatillas',
+          brand: 'Nike',
+          price: 3500
+        },
+        {
+          id: 'prod03',
+          name: 'Juego de ps4',
+          brand: 'Dark Souls',
+          price: 2000
+        },
+      ]
     }
   }
 
@@ -16,7 +36,7 @@ export default class App extends React.Component {
     return (
       <div className="App">
         <header className="App-container">
-          <Main userName={this.state.userName}></Main>
+          <Main userName={this.state.userName} products={this.state.products}></Main>
         </header>
       </div>
     );

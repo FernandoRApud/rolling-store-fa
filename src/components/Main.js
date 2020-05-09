@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from '../rollingstore.png';
+import ProductCard from './ProductCard';
 import {Layout, Input, Row, Col} from 'antd';
 const { Header, Content, Footer} = Layout;
 const { Search } = Input;
@@ -23,7 +24,14 @@ export default class Main extends React.Component{
                     </Row>
                 </Header>
                 <Content className="content">
-                    <p>Edit <code>src/App.js</code> and save to reload.</p>
+                    <p>Basado en tu última visita</p>
+                    <Row>
+                        {this.props.products.map(prod => (
+                            <Col xs={{span: 24}} lg={{span: 8}}>
+                                <ProductCard products={prod}/> 
+                            </Col>
+                        ))}
+                    </Row>
                 </Content>
                 <Footer className="footer">
                     Footer
