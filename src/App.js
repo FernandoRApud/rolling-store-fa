@@ -35,8 +35,14 @@ export default class App extends React.Component {
           brand: 'Dark Souls',
           price: 2000
         },
-      ]
+      ],
+      results: [],
+      term: ''
     }
+  }
+
+  updateTerm = (term) => {
+    this.setState({term: term})
   }
 
   render(){
@@ -45,7 +51,7 @@ export default class App extends React.Component {
         <Switch>
           <Route exact path="/">
             <div className="App-container">
-              <Main userName={this.state.userName} products={this.state.products}/>          
+              <Main userName={this.state.userName} products={this.state.products} term={this.updateTerm}/>          
             </div>
           </Route>
           <Route path="/results">

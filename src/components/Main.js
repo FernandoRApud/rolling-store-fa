@@ -25,6 +25,11 @@ export default class Main extends React.Component{
         }
     }
 
+    handleChange = (e) => {
+        let term = e.target.value;
+        this.props.term(term)
+    }
+
     render(){
         return(
             <Layout>
@@ -37,7 +42,7 @@ export default class Main extends React.Component{
                         <Col xs={{span: 19}} lg={{span: 16}}>
                             <div className="header-search">
                                 {this.renderRedirect()}
-                                <Search placeholder="Que queres comprar?" onSearch={this.setRedirect}/>
+                                <Search placeholder="Que queres comprar?" onSearch={this.setRedirect} onChange={this.handleChange}/>
                             </div>
                         </Col>
                         <Col xs={{span: 0}} lg={{span: 5}}>
