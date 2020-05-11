@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 export default class ProductCard extends React.Component{
     render(){

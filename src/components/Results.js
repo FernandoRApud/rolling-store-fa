@@ -37,7 +37,7 @@ export default class Results extends React.Component{
                         </Col>
                         <Col xs={{span: 19}} lg={{span: 16}}>
                             <div className="header-search">
-                                <Search placeholder="Que queres comprar?" onSearch={value => console.log(value)}/>
+                                <Search placeholder={this.props.term} onSearch={value => console.log(value)} enterButton/>
                             </div>
                         </Col>
                         <Col xs={{span: 0}} lg={{span: 5}}>
@@ -48,9 +48,9 @@ export default class Results extends React.Component{
                 <Content className="content">
                     <p>Resultados de tu búsqueda</p>
                     <Row>
-                        {this.props.products.map(prod => (
-                            <Col xs={{span: 24}} lg={{span: 8}}>
-                                <ProductCard products={prod}/> 
+                        {this.props.results.map(prod => (
+                            <Col xs={{span: 24}} lg={{span: 24}}>
+                                <ProductCard key={prod.id} products={prod}/> 
                             </Col>
                         ))}
                     </Row>

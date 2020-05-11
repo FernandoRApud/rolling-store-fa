@@ -24,10 +24,30 @@ export default class Main extends React.Component{
             return <Redirect to="/results"/>
         }
     }
-
+    
+    handleSearch = (term) => {
+        let localTerm = term;
+        let currentProducts = [];
+        let newProducts = [];
+        
+        if(localTerm !== ""){
+            
+            currentProducts = this.props.products;
+            newProducts = currentProducts.filter(item => {
+                const lc = item.name.toLowerCase();
+                const filter = localTerm.toLowerCase();
+                return lc.includes(filter);
+            })
+            this.props.updateList(newProducts, localTerm)
+        } else {
+            newProducts = this.props.products
+        }
+        this.setRedirect();
+    }
+    
     handleChange = (e) => {
         let term = e.target.value;
-        this.props.term(term)
+        this.props.updateTerm(term)
     }
 
     render(){
@@ -42,7 +62,7 @@ export default class Main extends React.Component{
                         <Col xs={{span: 19}} lg={{span: 16}}>
                             <div className="header-search">
                                 {this.renderRedirect()}
-                                <Search placeholder="Que queres comprar?" onSearch={this.setRedirect} onChange={this.handleChange}/>
+                                <Search placeholder="Que queres comprar?" onSearch={this.handleSearch} onChange={this.handleChange}/>
                             </div>
                         </Col>
                         <Col xs={{span: 0}} lg={{span: 5}}>

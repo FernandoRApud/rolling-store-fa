@@ -42,7 +42,13 @@ export default class App extends React.Component {
   }
 
   updateTerm = (term) => {
-    this.setState({term: term})
+    this.setState({term})
+  }
+
+  updateList = (newList, term) => {
+    term !== '' ?
+      this.setState({results: newList, term}) :
+      this.setState({results: this.state.products})
   }
 
   render(){
@@ -51,12 +57,12 @@ export default class App extends React.Component {
         <Switch>
           <Route exact path="/">
             <div className="App-container">
-              <Main userName={this.state.userName} products={this.state.products} term={this.updateTerm}/>          
+              <Main userName={this.state.userName} products={this.state.products} updateTerm={this.updateTerm} term={this.state.term} updateList={this.updateList}/>          
             </div>
           </Route>
           <Route path="/results">
             <div className="App-container">
-              <Results userName={this.state.userName} products={this.state.products}/>
+              <Results userName={this.state.userName} results={this.state.results} term={this.state.term}/>
             </div>
           </Route>
         </Switch>
