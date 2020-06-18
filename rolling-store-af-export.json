@@ -1,0 +1,10 @@
+{
+  "products" : {
+    "prod1" : {
+      "brand" : "Asus",
+      "id" : "prod1",
+      "name" : "Notebook",
+      "price" : 19000
+    }
+  }
+}

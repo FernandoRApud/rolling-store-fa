@@ -1,89 +1,32 @@
 import React from 'react';
-import logo from '../rollingstore.png';
 import ProductCard from './ProductCard';
-import {Redirect} from 'react-router-dom';
-import {Layout, Input, Row, Col} from 'antd';
-const { Header, Content, Footer} = Layout;
-const { Search } = Input;
+import {Layout, Row, Col} from 'antd';
+const { Content} = Layout;
+
 
 export default class Main extends React.Component{
 
-    constructor(props){
-        super(props);
-        this.state = {
-            redirect: false
-        }
-    }
-
-    setRedirect = () => {
-        this.setState({ redirect: true})
-    }
-
-    renderRedirect = () => {
-        if(this.state.redirect){
-            return <Redirect to="/results"/>
-        }
-    }
-    
-    handleSearch = (term) => {
-        let localTerm = term;
-        let currentProducts = [];
-        let newProducts = [];
-        
-        if(localTerm !== ""){
-            
-            currentProducts = this.props.products;
-            newProducts = currentProducts.filter(item => {
-                const lc = item.name.toLowerCase();
-                const filter = localTerm.toLowerCase();
-                return lc.includes(filter);
-            })
-            this.props.updateList(newProducts, localTerm)
-        } else {
-            newProducts = this.props.products
-        }
-        this.setRedirect();
-    }
-    
-    handleChange = (e) => {
-        let term = e.target.value;
-        this.props.updateTerm(term)
-    }
-
-    render(){
-        return(
-            <Layout>
-                <Header className="header">
-                    <Row>
-                        {/* Antd usa 24 columnas mietras que Bootstrap 12 */}
-                        <Col xs={{span: 5}} lg={{span: 3}}>
-                            <img src={logo} className="header-logo" alt="logo" />
-                        </Col>
-                        <Col xs={{span: 19}} lg={{span: 16}}>
-                            <div className="header-search">
-                                {this.renderRedirect()}
-                                <Search placeholder="Que queres comprar?" onSearch={this.handleSearch} onChange={this.handleChange}/>
-                            </div>
-                        </Col>
-                        <Col xs={{span: 0}} lg={{span: 5}}>
-                            <div className="header-greetings">Bienvenido {this.props.userName}</div>
-                        </Col>
-                    </Row>
-                </Header>
-                <Content className="content">
-                    <p>Basado en tu última visita</p>
-                    <Row>
-                        {this.props.products.map(prod => (
-                            <Col xs={{span: 24}} lg={{span: 8}}>
-                                <ProductCard products={prod}/> 
-                            </Col>
-                        ))}
-                    </Row>
-                </Content>
-                <Footer className="footer">
-                    Footer
-                </Footer>
-            </Layout>
-        );
-    }
+	render(){
+		return(
+			<Layout>
+				<Content className="content">
+				{
+          this.props.products.length === 0 ? 
+            <div className="">Cargando...</div>
+          :
+						<>
+							<p className="text-black" style={{paddingTop: '1.5rem'}}>Basado en tu última visita</p>
+							<Row>
+								{this.props.products.map(prod => (
+									<Col xs={{span: 24}} lg={{span: 6}}>
+										<ProductCard product={prod}/> 
+									</Col>
+								))}
+							</Row>
+						</>
+				}
+				</Content>
+			</Layout>
+		);
+	}
 }

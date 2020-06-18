@@ -4,40 +4,29 @@ import './App.css';
 import { Button } from 'antd';
 import Main from './components/Main';
 import Results from './components/Results';
+import Product from './components/Product';
+import Cart from './components/Cart';
+import Success from './components/Success';
+import CustomFooter from './components/CustomFooter';
+import CustomHeader from './components/CustomHeader';
+import { firebaseApp } from './firebase';
+
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";  
+import { connect } from "react-redux";
+import { getVisibleProducts } from "./reducers/products";
 
-export default class App extends React.Component {
+class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      userName: 'Fernando',
-      products: [
-        {
-          id: 'prod01',
-          name: 'Notebook',
-          brand: 'Asus',
-          price: 19000
-        },
-        {
-          id: 'prod02',
-          name: 'Zapatillas',
-          brand: 'Nike',
-          price: 3500
-        },
-        {
-          id: 'prod03',
-          name: 'Juego de ps4',
-          brand: 'Dark Souls',
-          price: 2000
-        },
-      ],
       results: [],
-      term: ''
+      term: '',
+      username: 'Fernando'
     }
   }
 
@@ -48,25 +37,60 @@ export default class App extends React.Component {
   updateList = (newList, term) => {
     term !== '' ?
       this.setState({results: newList, term}) :
-      this.setState({results: this.state.products})
+      this.setState({results: []})
   }
 
   render(){
     return (
       <Router>
-        <Switch>
-          <Route exact path="/">
-            <div className="App-container">
-              <Main userName={this.state.userName} products={this.state.products} updateTerm={this.updateTerm} term={this.state.term} updateList={this.updateList}/>          
-            </div>
-          </Route>
-          <Route path="/results">
-            <div className="App-container">
-              <Results userName={this.state.userName} results={this.state.results} term={this.state.term}/>
-            </div>
-          </Route>
-        </Switch>
+        <CustomHeader
+          username={this.state.username}
+          term={this.state.term}
+          updateTerm={this.updateTerm}
+          updateList={this.updateList}
+          products={this.props.products}
+        />
+          <Switch>
+            <Route exact path="/">
+              <div className="Main-container">
+                <Main products={this.props.products} />          
+              </div>
+            </Route>
+            <Route path="/results">
+              <div className="App-container">
+                <Results results={this.state.results}/>
+              </div>
+            </Route>
+            <Route path="/product/:id"
+              render={props =>
+              <div className="App-container">
+                <Product {...props} />
+              </div>
+              }>
+            </Route>
+            <Route path="/cart"
+              render={props =>
+              <div className="App-container">
+                <Cart {...props} />
+              </div>
+              }>
+            </Route>
+            <Route path="/success">
+              <div className="App-container">
+                <Success/>
+              </div>
+            </Route>
+          </Switch>
+        <CustomFooter />
       </Router>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  products: getVisibleProducts(state.products)
+})
+
+export default connect(
+  mapStateToProps
+)(App)
