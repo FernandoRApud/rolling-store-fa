@@ -10,21 +10,24 @@ export default class Main extends React.Component{
 		return(
 			<Layout>
 				<Content className="content">
-				{
-          this.props.products.length === 0 ? 
-            <div className="">Cargando...</div>
-          :
-						<>
-							<p className="text-black" style={{paddingTop: '1.5rem'}}>Basado en tu última visita</p>
-							<Row>
-								{this.props.products.map(prod => (
-									<Col xs={{span: 24}} lg={{span: 6}}>
-										<ProductCard product={prod}/> 
-									</Col>
-								))}
-							</Row>
-						</>
-				}
+					<div className="container">
+					{
+						this.props.products.length === 0 ? 
+							<div className="">Cargando...</div>
+						:
+							<>
+									<p className="text-black" style={{paddingTop: '1.5rem'}}>Ya disponible</p>	
+								<Row>
+								{/* xs={{span: 24}} lg={{span: 6}} */}
+									{this.props.products.map(prod => (
+										<Col >
+											<ProductCard product={prod}/> 
+										</Col>
+									))}
+								</Row>
+							</>
+					}
+					</div>
 				</Content>
 			</Layout>
 		);

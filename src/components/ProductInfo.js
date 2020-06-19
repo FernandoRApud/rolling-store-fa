@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 
 class ProductInfo extends Component {
   getPhoto(prodId) {
-    return `https://firebasestorage.googleapis.com/v0/b/rolling-store-af.appspot.com/o/products%2F${prodId}.png?alt=media`
+    return `https://firebasestorage.googleapis.com/v0/b/rolling-store-af.appspot.com/o/products%2F${prodId}.jpg?alt=media`
   }
 
   render() {
