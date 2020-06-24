@@ -29,19 +29,21 @@ class Cart extends Component {
     
     return(
       <Layout>
-        <Content className="content">
+        <Content className="content fontSize">
           <p> Carrito de: {customer} </p>
           <Row>
-            <Col xs={{ span: 24 }} lg={{ span: 12 }}>
+            <Col xs={{ span: 24 }} lg={{ span: 24 }}>
               <ProductsInCart products={products} />
             </Col>
-            <Col xs={{ span: 24 }} lg={{ span: 12 }}>
+            <Col xs={{ span: 24 }} lg={{ span: 24 }}>
               <CartDetails
                 shippingAddress={shippingAddress}
                 creditCard={creditCard}
               />
               <Link to= {{ pathname: '/' }}>
-                <a href="#" className="keepShopping-link">Seguir comprando</a>
+                <div className="keepShopping-link">
+                  <a href="#" className="keepShopping-link">Seguir comprando</a>
+                </div>
               </Link>
             </Col>
           </Row>

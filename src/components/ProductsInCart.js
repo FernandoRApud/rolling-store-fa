@@ -11,13 +11,18 @@ class ProductsInCart extends Component {
     
     return(
       <div>
-        <h3 style={{textAlign: 'center'}}>productos en Carrito</h3>
         {
           products.map(({ name, brand, price, id, quantity }) => (
             <div style={{ margin: 20 }}>
               <div className="productInCart">
-                <div>{name} {brand}</div>
-                <div>Subtotal: {quantity} x ${price} = ${quantity*price} </div>
+                <Row>
+                  <Col xs={{span: 21}} lg={21}>
+                    <div>{name}</div>
+                  </Col>
+                  <Col xs={{span: 3}} lg={3}>
+                    <div class="cart-price">${parseFloat(price)} </div>
+                  </Col>
+                </Row>
               </div>
             </div>
           ))

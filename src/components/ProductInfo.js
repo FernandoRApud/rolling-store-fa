@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import { Row, Col, Button } from 'antd';
+import { Row, Col, Button, Carousel } from 'antd';
+import {ShoppingCartOutlined, StarOutlined, StarFilled, StarTwoTone} from '@ant-design/icons';
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types'
 
@@ -9,33 +10,34 @@ class ProductInfo extends Component {
   }
 
   render() {
-    const { name, brand, price, id, description, shippingTime } = this.props.product;
+    const { name, brand, price, id, description, shippingTime, date } = this.props.product;
     const { product, onAddToCartClicked } = this.props
     return(
       <Fragment>
         <div className="productInfo">
           <Row>
-            <Col xs={{ span: 24 }} lg={{ span: 12 }}>
-              <div className="productInfo-imageContainer">
-                <img src={this.getPhoto(id)} className="product-image" style={{ height: '50vh' }} alt="product"/>
+            <Col xs={{ span: 24 }} lg={{ span: 18 }}>
+              <div >
+                <Carousel autoplay>
+                  <img src={this.getPhoto(`${id}-1`)} style={{ height: '10%', width: "100%"}}/>
+                </Carousel>
+                {/* <img src={this.getPhoto(id)} className="product-image" style={{ height: '50vh' }} alt="product"/> */}
               </div>
             </Col>
             <br />
-            <Col xs={{ span: 24 }} lg={{ span: 12 }}>
+            <Col xs={{ span: 24 }} lg={{ span: 6 }}>
               <div className="productInfo-description">
-                <div>{`producto: ${name} "${brand}"`} </div>
-                <Row>
-                  <Col span={12}> <div>Precio: {price} </div> </Col>
-                  <Col span={12}> <div>Llega en: {shippingTime} </div> </Col>
-                </Row>
-                <br />
-                <div style={{ textAlign: 'left' }}>Descripción: {description}</div>
-                <br />
+                <div> 
+                  <img src={this.getPhoto(id)} style={{width: "100%"}}></img>
+                </div>
+                <div style={{ textAlign: 'left', fontSize: '1rem', paddingTop: '0.5rem' }}>{description}</div>
+                <div style={{ textAlign: 'left', fontSize: '1rem', paddingTop: '0.5rem' }}>Fecha de lanzamiento: {date}</div>
+                <div style={{ textAlign: 'left', fontSize: '1rem', paddingTop: '0.5rem' }}>Desarrollador: {brand}</div>
                 <Link to={{
                   pathname: '/cart',
                   state: {product}
                 }}>
-                  <Button onClick={onAddToCartClicked}>Comprar</Button>  
+                  <Button style={{marginTop: '2rem', backgroundColor: 'green', color: 'white'}} onClick={onAddToCartClicked}><ShoppingCartOutlined style={{color: "white"}}/> Añadir al carrito</Button>  
                 </Link>
               </div>
             </Col>

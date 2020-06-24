@@ -28,7 +28,7 @@ class CartDetails extends Component{
 
     return(
       <div className="cartDetails">
-        <p>Total: ${ total }</p>
+        <p style={{ textAlign: 'right' }}>Total estimado: ${ total }</p>
 
         <p>¿Donde queres recibir tu compra?</p>
         <Input value={shippingAddress} onChange={this.onWriteAddress}/>

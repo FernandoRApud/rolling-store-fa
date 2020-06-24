@@ -1,6 +1,7 @@
 import shop from '../api/shop'
 import { firebaseApp } from "../firebase";
 import * as types from '../constants/ActionTypes'
+import quantityById from '../reducers/cart';
 
 const Products = firebaseApp.database().ref().child('products');
 
@@ -34,9 +35,9 @@ const addToCartUnsafe = productId => ({
 })
 
 export const addToCart = productId => (dispatch, getState) => {
-  if (getState().products.byId[productId].inventory > 0) {
+  // console.log('Aquí FER', quantityById(1, types.ADD_TO_CART))
     dispatch(addToCartUnsafe(productId))
-  }
+  
 }
 
 export const checkoutCart = (newShippingAddress, newCreditCard) => dispatch =>  {

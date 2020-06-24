@@ -246,8 +246,23 @@
 }
 
 .productInfo-description {
-  padding: 20px;
+  padding: 0 20px;
   text-align: center;
+}
+
+.productInCart{
+  padding: 1rem 15px;
+  background-color: #0f1626;
+}
+
+.cart-price{
+  background-color: #1b2838;
+  color: #74CEF5;
+  text-align: center;
+}
+
+.keepShopping-link{
+  padding: 0 15px;
 }
 
 /*-------------------------------------------------------------------*/
@@ -255,6 +270,10 @@
   background-color: var(--secondary);
   padding: 15px;
   margin: 20px;
+}
+
+.fontSize{
+  font-size: 1rem;
 }
 /*-------------------------------------------------------------------*/
 .footer {

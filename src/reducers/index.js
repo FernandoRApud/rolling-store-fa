@@ -17,7 +17,7 @@ const getShippingAddress = state => fromCart.getShippingAddress(state.cart)
 export const getTotal = state =>
   getAddedIds(state)
     .reduce((total, id) =>
-      total + getProduct(state, id).price * getQuantity(state, id),
+      total + getProduct(state, id).price * 1,
       0
     )
     .toFixed(2)
