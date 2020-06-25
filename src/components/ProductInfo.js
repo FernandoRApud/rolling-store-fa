@@ -20,6 +20,7 @@ class ProductInfo extends Component {
               <div >
                 <Carousel autoplay>
                   <img src={this.getPhoto(`${id}-1`)} style={{ height: '10%', width: "100%"}}/>
+                  <img src={this.getPhoto(`${id}-2`)} style={{ height: '10%', width: "100%"}}/>
                 </Carousel>
                 {/* <img src={this.getPhoto(id)} className="product-image" style={{ height: '50vh' }} alt="product"/> */}
               </div>
