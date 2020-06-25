@@ -199,7 +199,7 @@
   background-color: #B2BDC7;
 }
 
-.ant-carousel .slick-dots li button{
+.card-popover > .ant-carousel .slick-dots li button{
   display: none !important;
 }
 
@@ -274,6 +274,11 @@
 
 .fontSize{
   font-size: 1rem;
+}
+
+.cart-btn{
+  display: flex;
+  justify-content: center;
 }
 /*-------------------------------------------------------------------*/
 .footer {

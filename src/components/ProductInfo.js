@@ -14,13 +14,15 @@ class ProductInfo extends Component {
     const { product, onAddToCartClicked } = this.props
     return(
       <Fragment>
-        <div className="productInfo">
+        <div className="productInfo" style={{width: '80%', height: '100%'}}>
           <Row>
             <Col xs={{ span: 24 }} lg={{ span: 18 }}>
               <div >
                 <Carousel autoplay>
                   <img src={this.getPhoto(`${id}-1`)} style={{ height: '10%', width: "100%"}}/>
                   <img src={this.getPhoto(`${id}-2`)} style={{ height: '10%', width: "100%"}}/>
+                  <img src={this.getPhoto(`${id}-3`)} style={{ height: '10%', width: "100%"}}/>
+                  <img src={this.getPhoto(`${id}-4`)} style={{ height: '10%', width: "100%"}}/>
                 </Carousel>
                 {/* <img src={this.getPhoto(id)} className="product-image" style={{ height: '50vh' }} alt="product"/> */}
               </div>

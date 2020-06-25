@@ -20,7 +20,7 @@ class ProductsInCart extends Component {
                     <div>{name}</div>
                   </Col>
                   <Col xs={{span: 3}} lg={3}>
-                    <div class="cart-price">${parseFloat(price)} </div>
+                    <div class="cart-price">${price} </div>
                   </Col>
                 </Row>
               </div>
