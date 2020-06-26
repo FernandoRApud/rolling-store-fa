@@ -1,10 +1,7 @@
 import React from 'react';
-import logo from '../rollingstore.png';
-import ProductCard from './ProductCard';
 import {Redirect} from 'react-router-dom';
-import {Layout, Input, Row, Col} from 'antd';
-const { Header, Content, Footer} = Layout;
-const { Search } = Input;
+import {Layout, Input, Row} from 'antd';
+const {Content} = Layout;
 
 export default class Results extends React.Component{
     

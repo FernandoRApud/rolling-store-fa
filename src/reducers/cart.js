@@ -37,7 +37,7 @@ const quantityById = (state = initialState.quantityById, action) => {
     switch (action.type) {
       case ADD_TO_CART:
         const { productId } = action
-        if(state[productId] == 0){
+        if(state[productId] === 0){
           return { ...state,
             [productId]: (state[productId] || 0) + 1
           }

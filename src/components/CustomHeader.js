@@ -3,11 +3,11 @@ import logo from '../rollingstore.png';
 import { Layout, Row, Col, Input, Button, Modal, Form } from 'antd';
 import { Redirect, Link  } from 'react-router-dom';
 import PropTypes from 'prop-types'
-import { getInfoCustomer } from '../reducers';
+// import { getInfoCustomer } from '../reducers';
 import { registerUser } from "../actions";
 import { connect } from 'react-redux';
 import { 
-	getUser,
+	// getUser,
 	getUsername,
 	getPassword
 } from "../reducers";
@@ -66,7 +66,7 @@ class CustomHeader extends Component {
 		const { name, value } = e.target;
 		// console.log(name, value);
 		this.setState({[name]: value}, () => console.log(this.state));
-		this.state.usernameL != '' || this.state.passwordL != '' ? this.setState({formTextSubmit: 'Loguearse'}) : this.setState({formTextSubmit: 'Registrarse'});
+		this.state.usernameL !== '' || this.state.passwordL !== '' ? this.setState({formTextSubmit: 'Loguearse'}) : this.setState({formTextSubmit: 'Registrarse'});
 	}
 
 	handleClearTerm() {
@@ -94,21 +94,21 @@ class CustomHeader extends Component {
 	}
 
 	handleSubmit(text){
-		if(text == 'Registrarse' && this.state.usernameR != '' && this.state.passwordR != ''){
+		if(text === 'Registrarse' && this.state.usernameR !== '' && this.state.passwordR !== ''){
 			// registerUser(this.state.usernameR, this.state.passwordR)
-		}else if(text == 'Loguearse' && this.state.usernameL != '' && this.state.passwordL != ''){
+		}else if(text === 'Loguearse' && this.state.usernameL !== '' && this.state.passwordL !== ''){
 			// console.log('login')
 			this.setState({isLoged: true, visible: false})
-		}else if(text == 'Loguearse'){
+		}else if(text === 'Loguearse'){
 			alert('Por favor, completa el logueo')
-		}else if(text == 'Registrarse'){
+		}else if(text === 'Registrarse'){
 			alert('Por favor, completa el registro')
 		}
 		// console.log()
 	}
 
 	render() {
-		const { username } = this.props; 
+		// const { username } = this.props; 
 		console.log(getUsername);
 		return(
 			<Header className='header'>
@@ -125,10 +125,10 @@ class CustomHeader extends Component {
 							<p>Loguearse</p>
 							<Form>
 								<Form.Item>
-									<Input placeholder="Nombre de usuario" name="usernameL" onChange={(e) => this.handleLogReg(e)} disabled={this.state.usernameR != '' || this.state.passwordR != ''}></Input>
+									<Input placeholder="Nombre de usuario" name="usernameL" onChange={(e) => this.handleLogReg(e)} disabled={this.state.usernameR !== '' || this.state.passwordR !== ''}></Input>
 								</Form.Item>
 								<Form.Item>
-									<Input.Password placeholder="Contraseña" name="passwordL" onChange={(e) => this.handleLogReg(e)} disabled={this.state.usernameR != '' || this.state.passwordR != ''}></Input.Password>
+									<Input.Password placeholder="Contraseña" name="passwordL" onChange={(e) => this.handleLogReg(e)} disabled={this.state.usernameR !== '' || this.state.passwordR !== ''}></Input.Password>
 								</Form.Item>
 							</Form>	
 						</Col>
@@ -139,10 +139,10 @@ class CustomHeader extends Component {
 							<p>Registrarse</p>
 							<Form>
 								<Form.Item>
-									<Input placeholder="Nombre de usuario" name="usernameR" onChange={(e) => this.handleLogReg(e)} disabled={this.state.usernameL != '' || this.state.passwordL != ''}></Input>
+									<Input placeholder="Nombre de usuario" name="usernameR" onChange={(e) => this.handleLogReg(e)} disabled={this.state.usernameL !== '' || this.state.passwordL !== ''}></Input>
 								</Form.Item>
 								<Form.Item>
-									<Input.Password placeholder="Contraseña" name="passwordR" onChange={(e) => this.handleLogReg(e)} disabled={this.state.usernameL != '' || this.state.passwordL != ''}></Input.Password>
+									<Input.Password placeholder="Contraseña" name="passwordR" onChange={(e) => this.handleLogReg(e)} disabled={this.state.usernameL !== '' || this.state.passwordL !== ''}></Input.Password>
 								</Form.Item>
 							</Form>	
 						</Col>

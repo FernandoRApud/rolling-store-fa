@@ -1,7 +1,6 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import {Link} from "react-router-dom";
-import { Card, Row, Col, Popover, Button, Carousel } from 'antd';
-const { Meta } = Card;  
+import { Row, Col, Popover, Carousel } from 'antd';
 
 export default class ProductCard extends React.Component{
 	getPhoto(prodId) {
@@ -9,17 +8,17 @@ export default class ProductCard extends React.Component{
 	}
 
 	render(){
-		const { name, brand, price, id, description, date } = this.props.product;
+		const { name, price, id, description, date } = this.props.product;
 
 		const content = (
 			<div className="card-popover">
 				<b className="card-title"><p>{name}</p></b>
 				<p className="card-date">Lanzamiento: {date}</p>
 				<Carousel autoplay>
-					<img src={this.getPhoto(`${id}-1`)}/>
-					<img src={this.getPhoto(`${id}-2`)}/>
-					<img src={this.getPhoto(`${id}-3`)}/>
-					<img src={this.getPhoto(`${id}-4`)}/>
+					<img src={this.getPhoto(`${id}-1`)} alt="1"/>
+					<img src={this.getPhoto(`${id}-2`)} alt="2"/>
+					<img src={this.getPhoto(`${id}-3`)} alt="3"/>
+					<img src={this.getPhoto(`${id}-4`)} alt="4"/>
 				</Carousel>
 				<p style={{paddingTop: '1.5rem'}}>{description}</p>
 			</div>

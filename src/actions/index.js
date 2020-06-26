@@ -1,8 +1,8 @@
 import shop from '../api/shop'
 import { firebaseApp } from "../firebase";
 import * as types from '../constants/ActionTypes'
-import quantityById from '../reducers/cart';
-import register from '../reducers/users';
+// import quantityById from '../reducers/cart';
+// import register from '../reducers/users';
 
 const Products = firebaseApp.database().ref().child('products');
 const Users = firebaseApp.database().ref().child('users');

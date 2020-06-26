@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { checkoutCart } from '../actions'
 import { getTotal } from '../reducers'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import CreditCard from './CreditCard';
 import Notifications, { notify } from "react-notify-toast";
 // import Form from 'antd/lib/form/Form';

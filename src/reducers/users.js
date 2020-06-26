@@ -1,13 +1,13 @@
 import {
   REGISTER_USER
 } from '../constants/ActionTypes'
-import { firebaseApp } from '../firebase'
+// import { firebaseApp } from '../firebase'
 
-const Users = firebaseApp.database().ref().child('users');
+// const Users = firebaseApp.database().ref().child('users');
 
-const createUsers = state => {
-  Users.push(state)
-}
+// const createUsers = state => {
+//   Users.push(state)
+// }
 
 const initialState = {
   username: "ab",

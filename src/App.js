@@ -1,7 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { Button } from 'antd';
 import Main from './components/Main';
 import Results from './components/Results';
 import Product from './components/Product';
@@ -9,13 +7,11 @@ import Cart from './components/Cart';
 import Success from './components/Success';
 import CustomFooter from './components/CustomFooter';
 import CustomHeader from './components/CustomHeader';
-import { firebaseApp } from './firebase';
 
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";  
 import { connect } from "react-redux";
 import { getVisibleProducts } from "./reducers/products";

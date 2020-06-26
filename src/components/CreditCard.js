@@ -1,4 +1,4 @@
-import { Modal, Button, Form, Input } from 'antd';
+import { Modal, Form, Input } from 'antd';
 import React from 'react';
 import Cards from 'react-credit-cards';
 import 'react-credit-cards/es/styles-compiled.css';

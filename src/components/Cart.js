@@ -45,7 +45,7 @@ class Cart extends Component {
               />
               <Link to= {{ pathname: '/' }}>
                 <div className="keepShopping-link">
-                  <a href="#" className="keepShopping-link">Seguir comprando</a>
+                  <p className="keepShopping-link">Seguir comprando</p>
                 </div>
               </Link>
             </Col>
