@@ -26,7 +26,7 @@ class Cart extends Component {
 
   render() {
     const { customer, shippingAddress, creditCard, products } = this.props
-    
+    // console.log(getInfoCustomer(state));
     return(
       <Layout>
         <Content className="content fontSize">

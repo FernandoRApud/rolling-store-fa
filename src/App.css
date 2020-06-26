@@ -106,6 +106,12 @@
   font-size: 16px;
 }
 
+.header-log{
+  display: flex !important;
+  justify-content: center;
+  margin-top: 15px;
+}
+
 .clear-icon {
   color: var(--secondary);
   top: -17px;

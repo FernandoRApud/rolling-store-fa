@@ -8,7 +8,7 @@ import { Provider } from 'react-redux'
 import reducer from './reducers'
 import 'antd/dist/antd.css';
 import thunk from 'redux-thunk'
-import { getFetchedProducts } from "./actions";
+import { getFetchedProducts, logUser } from "./actions";
 import { createLogger } from "redux-logger";
 
 const middleware = [ thunk ]
@@ -24,6 +24,7 @@ const store = createStore(
 )
 
 store.dispatch(getFetchedProducts())
+store.dispatch(logUser())
 
 ReactDOM.render(
   <Provider store={store}>

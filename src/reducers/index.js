@@ -1,18 +1,24 @@
 import { combineReducers } from 'redux'
 import cart, * as fromCart from './cart'
 import products, * as fromProducts from './products'
+import users, * as fromUsers from './users'
 
 export default combineReducers({
   cart,
-  products
+  products,
+  users
 })
 
+export const getUsername = state => fromUsers.username(state)
+export const getPassword = state => fromUsers.password(state)
 const getAddedIds = state => fromCart.getAddedIds(state.cart)
 const getQuantity = (state, id) => fromCart.getQuantity(state.cart, id)
 const getProduct = (state, id) => fromProducts.getProduct(state.products, id)
 const getCustomer = state => fromCart.getCustomer(state.cart)
 const getCreditCard = state => fromCart.getCreditCard(state.cart)
 const getShippingAddress = state => fromCart.getShippingAddress(state.cart)
+
+export const getUser = state => getUsername(state)
 
 export const getTotal = state =>
   getAddedIds(state)

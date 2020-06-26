@@ -2,8 +2,27 @@ import shop from '../api/shop'
 import { firebaseApp } from "../firebase";
 import * as types from '../constants/ActionTypes'
 import quantityById from '../reducers/cart';
+import register from '../reducers/users';
 
 const Products = firebaseApp.database().ref().child('products');
+const Users = firebaseApp.database().ref().child('users');
+
+export const registerUser = (username, password) => dispatch => {
+  dispatch({
+    type: types.REGISTER_USER,
+    // register
+    payload: {
+      username,
+      password
+    }
+  })
+}
+
+export const logUser = () => dispatch => {
+  Users.on('value', snapshot =>{
+    dispatch(registerUser(snapshot.val()))
+  })
+}
 
 const fetchProducts = products => {
   return {
@@ -13,6 +32,7 @@ const fetchProducts = products => {
 }
 
 export const getFetchedProducts = () => dispatch => {
+  // console.log(register)
   Products.on('value', snapshot => {
     dispatch(fetchProducts(snapshot.val()))
   })

@@ -23,7 +23,15 @@ export default class CreditCard extends React.Component {
   }
 
   handleSubmit = (e) => {
-    console.log(e)
+    this.setState({
+      card: {number: this.state.number, name: this.state.name, expiry: this.state.expiry, cvc: this.state.cvc},
+      cvc: '',
+      expiry: '',
+      focus: '',
+      name: '',
+      number: '',
+    }, () => this.props.notVisible())
+    console.log(this.state.card)
   }
   
   render() {
@@ -31,7 +39,7 @@ export default class CreditCard extends React.Component {
       <Modal
           title="Basic Modal"
           visible={this.props.visible}
-          onOk={this.props.submit}
+          onOk={this.handleSubmit}
           onCancel={this.props.notVisible}
         >
         <div id="PaymentForm">
@@ -44,17 +52,18 @@ export default class CreditCard extends React.Component {
           />
           <Form.Provider>
 
-          <Form name="creditCard" style={{paddingTop: '1rem'}} onSubmit={(e) => this.handleSubmit()}>            
+          <Form name="creditCard" style={{paddingTop: '1rem'}} >            
             <Form.Item rules={[{ required: true, message: 'Por favor, ingresa tu número de tarjeta!' }]}>
-              <Input placeholder="Número de tarjeta" onChange={this.handleInputChange} name="number" onFocus={this.handleInputFocus} ></Input>
+              <Input placeholder="Número de tarjeta" onChange={this.handleInputChange} name="number" onFocus={this.handleInputFocus} maxLength="16"></Input>
             </Form.Item>
             <Form.Item>
               <Input placeholder="Nombre" onChange={this.handleInputChange} name="name" onFocus={this.handleInputFocus}></Input>
             </Form.Item>
-            <Form.Item >
-              <Button type="primary" htmlType="submit">
-                Submit
-              </Button>
+            <Form.Item>
+              <Input placeholder="Fecha de vencimiento" onChange={this.handleInputChange} name="expiry" onFocus={this.handleInputFocus} maxLength="4"></Input>
+            </Form.Item>
+            <Form.Item>
+              <Input placeholder="CVC" onChange={this.handleInputChange} name="cvc" onFocus={this.handleInputFocus} maxLength="3"></Input>
             </Form.Item>
           </Form>
           </Form.Provider>
