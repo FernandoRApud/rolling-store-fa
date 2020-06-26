@@ -10,6 +10,7 @@ class ProductsInCart extends Component {
     let games = []
     this.props.products.map((name) => {
       games.push(name)
+      return('a')
     });
     this.props.games(games)
   }
@@ -28,7 +29,7 @@ class ProductsInCart extends Component {
                     <div>{name}</div>
                   </Col>
                   <Col xs={{span: 3}} lg={3}>
-                    <div class="cart-price">${price} </div>
+                    <div className="cart-price">${price} </div>
                   </Col>
                 </Row>
               </div>
