@@ -6,6 +6,14 @@ class ProductsInCart extends Component {
     return `https://firebasestorage.googleapis.com/v0/b/rolling-store-av-259fe.appspot.com/o/products%2F${prodId}.png?alt=media`
   }
 
+  componentDidMount(){
+    let games = []
+    this.props.products.map((name) => {
+      games.push(name)
+    });
+    this.props.games(games)
+  }
+
   render() {
     const { products } = this.props;
     

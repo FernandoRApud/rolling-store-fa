@@ -20,12 +20,14 @@ class Cart extends Component {
     super(props);
     this.state = {
       creditCard: '',
-      shippingAddress: ''
+      shippingAddress: '',
+      games: []
     }
   }
 
   render() {
     const { customer, shippingAddress, creditCard, products } = this.props
+    console.log(this.state.games)
     // console.log(getInfoCustomer(state));
     return(
       <Layout>
@@ -33,12 +35,13 @@ class Cart extends Component {
           <p> Carrito de: {customer} </p>
           <Row>
             <Col xs={{ span: 24 }} lg={{ span: 24 }}>
-              <ProductsInCart products={products} />
+              <ProductsInCart products={products} games={(value) => this.setState({games: value})}/>
             </Col>
             <Col xs={{ span: 24 }} lg={{ span: 24 }}>
               <CartDetails
                 shippingAddress={shippingAddress}
                 creditCard={creditCard}
+                games={this.state.games}
               />
               <Link to= {{ pathname: '/' }}>
                 <div className="keepShopping-link">

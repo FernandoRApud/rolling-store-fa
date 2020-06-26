@@ -37,7 +37,7 @@ export default class CreditCard extends React.Component {
   render() {
     return (
       <Modal
-          title="Basic Modal"
+          title="Tarjeta de crédito"
           visible={this.props.visible}
           onOk={this.handleSubmit}
           onCancel={this.props.notVisible}

@@ -24,7 +24,8 @@ class CustomHeader extends Component {
 			passwordL: '',
 			usernameR: 'edu',
 			passwordR: '432',
-			formTextSubmit: 'Registrarse'
+			formTextSubmit: 'Registrarse',
+			isLoged: false
 		}
 		this.handleChange = this.handleChange.bind(this);
 		this.updateList = this.props.updateList.bind(this);
@@ -94,9 +95,10 @@ class CustomHeader extends Component {
 
 	handleSubmit(text){
 		if(text == 'Registrarse' && this.state.usernameR != '' && this.state.passwordR != ''){
-			registerUser(this.state.usernameR, this.state.passwordR)
+			// registerUser(this.state.usernameR, this.state.passwordR)
 		}else if(text == 'Loguearse' && this.state.usernameL != '' && this.state.passwordL != ''){
-			console.log('login')
+			// console.log('login')
+			this.setState({isLoged: true, visible: false})
 		}else if(text == 'Loguearse'){
 			alert('Por favor, completa el logueo')
 		}else if(text == 'Registrarse'){
@@ -173,8 +175,7 @@ class CustomHeader extends Component {
 						</div>
 					</Col>
 					<Col xs={{ span: 0 }} lg={{ span: 5 }} style={{display: 'flex', justifyContent: 'center'}}>
-							<Button className="header-log" onClick={() => this.setState({visible: true})}>Loguearse</Button>
-						{/* <div className='header-greetings text-h'>Bienvenido {username}</div> */}
+							{this.state.isLoged ? <div className='header-greetings text-h'>Bienvenido {this.props.username}</div> : <Button className="header-log" onClick={() => this.setState({visible: true})}>Loguearse</Button>}
 					</Col>
 				</Row>
 			</Header>

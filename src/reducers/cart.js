@@ -17,7 +17,8 @@ const initialState = {
     quantityById: {},
     creditCard: '',
     shippingAddress: '',
-    customer: 'Fernando'
+    customer: 'Fernando',
+    games: []
 }
 
 const addedIds = (state = initialState.addedIds, action) => {
@@ -81,7 +82,8 @@ const cart = (state = initialState, action) => {
       quantityById: state.quantityById,
       customer: state.customer,
       creditCard: action.payload.newCreditCard,
-      shippingAddress: action.payload.newShippingAddress
+      shippingAddress: action.payload.newShippingAddress,
+      games: action.payload.games
     }
     createPurchase(newState)
     return initialState
