@@ -31,7 +31,7 @@ class ProductInfo extends Component {
             <Col xs={{ span: 24 }} lg={{ span: 6 }}>
               <div className="productInfo-description">
                 <div> 
-                  <img src={this.getPhoto(id)} style={{width: "100%"}} alt="photo"></img>
+                  <img src={this.getPhoto(id)} style={{width: "100%"}} alt="5"></img>
                 </div>
                 <div style={{ textAlign: 'left', fontSize: '1rem', paddingTop: '0.5rem' }}>{description}</div>
                 <div style={{ textAlign: 'left', fontSize: '1rem', paddingTop: '0.5rem' }}>Fecha de lanzamiento: {date}</div>

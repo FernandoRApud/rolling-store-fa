@@ -1,6 +1,6 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom';
-import {Layout, Input, Row} from 'antd';
+import {Layout, Row} from 'antd';
 const {Content} = Layout;
 
 export default class Results extends React.Component{

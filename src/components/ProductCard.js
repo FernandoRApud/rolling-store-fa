@@ -35,7 +35,7 @@ export default class ProductCard extends React.Component{
 				>
 					<Popover content={content} placement="rightTop" overlayStyle={{ width: "15%" }}>
 						<div className="card-container">
-							<img src={this.getPhoto(id)} style={{width: "100%"}}></img>
+							<img src={this.getPhoto(id)} style={{width: "100%"}} alt="5"></img>
 							<div className="card-text-container">
 								<Row type="flex" className="card-text-row">
 									<Col xs={{span: 14}} lg={{span: 14}}>
