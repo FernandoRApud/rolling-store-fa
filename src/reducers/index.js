@@ -9,8 +9,8 @@ export default combineReducers({
   users
 })
 
-export const getUsername = state => fromUsers.username(state)
-export const getPassword = state => fromUsers.password(state)
+export const getUsername = state => fromUsers.username(state.username)
+export const getPassword = state => fromUsers.password(state.password)
 const getAddedIds = state => fromCart.getAddedIds(state.cart)
 const getQuantity = (state, id) => fromCart.getQuantity(state.cart, id)
 const getProduct = (state, id) => fromProducts.getProduct(state.products, id)
@@ -18,7 +18,11 @@ const getCustomer = state => fromCart.getCustomer(state.cart)
 const getCreditCard = state => fromCart.getCreditCard(state.cart)
 const getShippingAddress = state => fromCart.getShippingAddress(state.cart)
 
-export const getUser = state => getUsername(state)
+export const getUser = state => {
+  console.log(state);
+  getUsername(state)
+  getPassword(state)
+}
 
 export const getTotal = state =>
   getAddedIds(state)

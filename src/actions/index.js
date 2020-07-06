@@ -18,9 +18,16 @@ export const registerUser = (username, password) => dispatch => {
   })
 }
 
+const logedUsers = (users) => {
+  return{
+    type: types.LOGED_USERS,
+    users
+  }
+}
+
 export const logUser = () => dispatch => {
-  Users.on('value', snapshot =>{
-    dispatch(registerUser(snapshot.val()))
+  Users.on('value', snapshot => {
+    dispatch(logedUsers(snapshot.val()))
   })
 }
 

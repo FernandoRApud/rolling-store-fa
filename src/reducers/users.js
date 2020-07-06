@@ -1,49 +1,70 @@
 import {
-  REGISTER_USER
+  REGISTER_USER,
+  LOGED_USERS
 } from '../constants/ActionTypes'
-// import { firebaseApp } from '../firebase'
+import { firebaseApp } from '../firebase'
 
-// const Users = firebaseApp.database().ref().child('users');
+const Users = firebaseApp.database().ref().child('users');
 
-// const createUsers = state => {
-//   Users.push(state)
-// }
+const createUsers = state => {
+  Users.push(state)
+}
 
 const initialState = {
-  username: "ab",
-  password: "1",
+  username: "",
+  password: "",
   creditCards: [],
   shippingAddress: [],
 }
 
-const register = (state = initialState.username, action) =>{
-  switch(action.type){
-    case REGISTER_USER: 
-      return state
-    default:
-      return state
-  }
+// const register = (state = initialState.username, action) => {
+//   switch(action.type){
+//     case REGISTER_USER: 
+//       return state
+//     default:
+//       return state
+//   }
+// }
+
+const user = (state, action) => {
+  return state
 }
 
-export const username = state => state.username
-export const password = state => state.password
+export const username = (state = initialState.username) => {
+  return state
+}
+
+export const password = (state = initialState.password) => {
+  return state
+}
 
 const users = (state = initialState, action) => {
   switch (action.type){
-    // case REGISTER_USER:
-    //   const newUser = {
-    //     username: state.username,
-    //     password: state.password
-    //   }
-    //   createUsers(newUser)
-    //   return initialState
+    case REGISTER_USER:
+      const newUser = {
+        username: action.payload.username,
+        password: action.payload.password,
+        creditCards: [],
+        shippingAddress: [],
+      }
+      createUsers(newUser)
+      return initialState
     // case REGISTER_USER:
     //   console.log('llega')
     //   return initialState
-    default: 
+    case LOGED_USERS:
       return {
-        username: register(state.username, action),
-        password: register(state.password, action)
+        ...state
+      }
+    default: 
+      // if(action){
+      //   return{
+      //     ...state,
+      //     []:
+      //   }
+      // }
+      return {
+        users: user(state)
       }
   }
 }

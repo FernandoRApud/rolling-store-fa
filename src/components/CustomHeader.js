@@ -3,13 +3,13 @@ import logo from '../rollingstore.png';
 import { Layout, Row, Col, Input, Button, Modal, Form } from 'antd';
 import { Redirect, Link  } from 'react-router-dom';
 import PropTypes from 'prop-types'
-// import { getInfoCustomer } from '../reducers';
+// import { getUser } from '../reducers';
 import { registerUser } from "../actions";
 import { connect } from 'react-redux';
 import { 
-	// getUser,
-	getUsername,
-	getPassword
+	getUser,
+	// getUsername,
+	// getPassword
 } from "../reducers";
 const { Header } = Layout;
 const { Search } = Input;
@@ -95,7 +95,7 @@ class CustomHeader extends Component {
 
 	handleSubmit(text){
 		if(text === 'Registrarse' && this.state.usernameR !== '' && this.state.passwordR !== ''){
-			// registerUser(this.state.usernameR, this.state.passwordR)
+			this.props.registerUser(this.state.usernameR, this.state.passwordR)
 		}else if(text === 'Loguearse' && this.state.usernameL !== '' && this.state.passwordL !== ''){
 			// console.log('login')
 			this.setState({isLoged: true, visible: false})
@@ -108,8 +108,10 @@ class CustomHeader extends Component {
 	}
 
 	render() {
+		// console.log(this.state.username)
+		console.log(this.props.username)
 		// const { username } = this.props; 
-		console.log(getUsername);
+		// console.log(getUsername);
 		return(
 			<Header className='header'>
 				<Modal
@@ -183,16 +185,12 @@ class CustomHeader extends Component {
 	}
 }
 
-CustomHeader.propTypes = {
-	registerUser: PropTypes.func.isRequired
-}
+// CustomHeader.propTypes = {
+// 	registerUser: PropTypes.func.isRequired
+// }
 
 const mapStateToProps = state => ({
-  username: getUsername(state),
-  password: getPassword(state),
+  user: getUser(state)
 })
 
-export default connect(
-	mapStateToProps,
-	{registerUser}
-)(CustomHeader)
+export default connect(mapStateToProps,{registerUser})(CustomHeader)
